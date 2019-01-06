@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Lecture10_CourseAppModule.iml" filepath="$PROJECT_DIR$/Lecture10_CourseAppModule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jay.programming.CourseAppDatabase/jay.programming.CourseAppDatabase.iml" filepath="$PROJECT_DIR$/jay.programming.CourseAppDatabase/jay.programming.CourseAppDatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/jay.programming.courseApp/jay.programming.courseApp.iml" filepath="$PROJECT_DIR$/jay.programming.courseApp/jay.programming.courseApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jay.programming.courseAppDatabase/jay.programming.courseAppDatabase.iml" filepath="$PROJECT_DIR$/jay.programming.courseAppDatabase/jay.programming.courseAppDatabase.iml" />
     </modules>
   </component>
 </project>

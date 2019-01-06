@@ -1,4 +1,4 @@
-package jay.programming.CourseAppDatabase;
+package jay.programming.courseAppDatabase;
 
 public class Course {
     private String courseName;
