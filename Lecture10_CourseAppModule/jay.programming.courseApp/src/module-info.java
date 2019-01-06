@@ -1,3 +1,5 @@
 module jay.programming.courseApp {
-    requires jay.programming.courseAppDatabase; //accepts classes from stated module.
+    //module requirements
+    requires jay.programming.courseAppDatabase;
+    requires jdk.incubator.httpclient;
 }
