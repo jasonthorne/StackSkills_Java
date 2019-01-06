@@ -1,3 +1,3 @@
-#Java Masterclass course from stackskills.com
+Java Masterclass course from stackskills.com
 
-#Lesson numbers indicated at beginning of commit comments.
+Lesson numbers indicated at beginning of commit comments.
