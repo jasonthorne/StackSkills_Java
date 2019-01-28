@@ -56,7 +56,8 @@ public class Main {
 
 
         //==============Pre JAVA 9 way:
-       /* URL url = new URL("https://www.buildappswithpaulo.com"); //Specify URL
+       /*
+       URL url = new URL("https://www.buildappswithpaulo.com"); //Specify URL
         URLConnection urlConnection = url.openConnection();
         BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
@@ -65,7 +66,8 @@ public class Main {
         while ((inputLine = reader.readLine()) != null){
             System.out.println(inputLine);
         }
-        reader.close();*/
+        reader.close();
+        */
         //Lesson 11++++++++++
 
 
