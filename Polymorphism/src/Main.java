@@ -5,10 +5,13 @@ public class Main {
 
         Dog myDog = new Dog();
 
-        myDog.makeSound();
+      /*  myDog.makeSound();
         myDog.makeSound("Woof, woof, baby!");
         myDog.makeSound("meeeow, daddyo", 6);
+*/
 
+        myDog.makeSound();
+        myDog.makeSound("another woof");
 
     }
 }
