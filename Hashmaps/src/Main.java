@@ -9,7 +9,7 @@ public class Main {
         HashMap users = new HashMap(); //+++IMPORTANT: hashmaps have key and value pairs.
 
         users.put("Bob", 34); //"Bob" is the key. "34" is the value
-        users.put("Jeff", 64);
+        users.put("Jeff", 66);
 
         if (users.containsKey("Jeff")){
             System.out.println("Jeff is here!");
@@ -20,7 +20,7 @@ public class Main {
         System.out.println("All values: " + users.values());
         System.out.println("All keys and values:" + users.entrySet());
 
-        //loop through Hashmap
+        //loop through Hashmap with iterator
         Iterator it = users.entrySet().iterator();
 
         while(it.hasNext()){ //while 'it' is pointing to another value in hashmap
@@ -29,6 +29,19 @@ public class Main {
 
             System.out.println(pair.getKey() + " = " + pair.getValue());
         }
+
+
+        //////////////////////////
+
+        HashMap<String, Integer> newUser = new HashMap<String, Integer>(); //Hashmap with string keys and int values ONLY.
+
+        newUser.put("Sue", 11);
+        System.out.println(newUser.get("Sue"));
+
+
+
+
+
 
 
 
