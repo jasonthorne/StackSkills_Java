@@ -24,11 +24,12 @@ public class Main {
         Iterator it = users.entrySet().iterator();
 
         while(it.hasNext()){ //while 'it' is pointing to another value in hashmap
-            Map.Entry pair = (Map.Entry) it.next(); //cast 'it.next' to be of type 'map entry'. Map is a higher level collections class.
+           Map.Entry pair = (Map.Entry) it.next(); //cast 'it.next' to be of type 'map entry'. Map is a higher level collections class.
             //'pair' of type 'Map.entry' now has everything thats inside of 'users' hashmap.
 
             System.out.println(pair.getKey() + " = " + pair.getValue());
         }
+
 
 
         //////////////////////////
