@@ -15,6 +15,7 @@ public class Main {
 
         selectedPerson = Members.BOBBY; //+++ selectedPerson can ONLY ever hold one of the enum values as its an object created from the 'Members' enum.
 
+
         if (selectedPerson.equals(Members.BOBBY)){
             System.out.println("Bobby!");
         }
