@@ -39,7 +39,7 @@ public class Main {
         //Angular brackets are used for generics instead of brackets
         Login<String> login1 = new Login<String>("Paul", "password");
         Login<Integer> login2 = new Login<Integer>(5, 7); //another example of a login object
-
+        //Login<Boolean> login4 = new Login<Boolean>(true, false);
 
         System.out.println(login1.getName() + " " + login2.getName());
 
@@ -48,10 +48,14 @@ public class Main {
         person.setPersonName("Bob");
         person.setPersonPassword("123");
 
+        //Making Login obj which takes a Person obj and passing in person var of type Person as perams
         Login<Person> login3 = new Login<Person>(person, person);
 
         System.out.println(login3.getName().getPersonName());
         //-----------
+
+
+
 
     }
 }
