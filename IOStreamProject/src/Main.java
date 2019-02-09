@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
 
@@ -22,6 +20,29 @@ public class Main {
 
         File file = new File("src/test.txt");
 
+        //+++++BUFFER READER METHOD OF READING:
+
+        try (FileReader fileReader = new FileReader(file)){
+
+            //Buffered reader is better for reading, but requires a filereader being passed to it
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String line = null; //for holding what is read.
+
+            while ((line = bufferedReader.readLine()) != null){ //if line is not null (ie there is content in .readLine)
+
+                System.out.println(line); //No conversion necessary like with fileInputStream below, as BufferedReader reads as string
+
+            }
+
+        }catch (IOException e){
+
+            e.printStackTrace();
+
+        }
+
+        /*
+        //+++FILEINPUTSTREAM METHOD OF READING:
         //surrounding in try-catch incase of fail
         try (FileInputStream fileInputStream = new FileInputStream(file)){
 
@@ -40,6 +61,9 @@ public class Main {
 
             e.printStackTrace(); //detailed error log relating to IO exceptions will be printed.
         }
+        */
+
+
 
 
     }

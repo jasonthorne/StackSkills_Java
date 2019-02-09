@@ -1,20 +1,17 @@
 package com.Jay.IOFileWrite;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 
 public class WriteToFile {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         File file = new File("src/myFile.txt");
 
         //create new FileWriter object and pass it our file as file to write to
         try(FileWriter fileWriter = new FileWriter(file)) {
 
-            fileWriter.write("What is this sorcery?!!!"); //write to file
+            fileWriter.write("Lawks are lordy, my bottoms on fire!"); //write to file
 
             fileWriter.close(); //++++++IMPORTANT ++++++  close fileWriter after writing!!
 
@@ -32,7 +29,9 @@ public class WriteToFile {
             }
 
 
-        } catch (Exception e){
+        } catch (IOException e){ //Throwing IO exception (declared in Main())
+
+            e.printStackTrace(); //give IOException error log msgs
 
         }
 
