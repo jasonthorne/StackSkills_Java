@@ -1,6 +1,4 @@
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Main {
 
@@ -26,9 +24,27 @@ public class Main {
 
             TreeSet sortedSet = new TreeSet(set); //adding just created set
 
-            System.out.println("Sorted set:" + sortedSet);
+            System.out.println("Sorted Tree set:" + sortedSet);
 
 
+            //++++Linked Hash Set: +++++
+            // Contains unique elements (like hashset),
+            //Provides ALL optional set operations
+            //ALLOWS Null values
+            //Contains an insertion order
+
+            LinkedHashSet<String> linkedHashSet = new LinkedHashSet<String>();
+
+            linkedHashSet.add("Movie"); linkedHashSet.add("Potato");
+            linkedHashSet.add("James"); linkedHashSet.add("Now");
+            linkedHashSet.add("Java"); linkedHashSet.add("Belly Button Fluff");
+
+            //Iterator class allows us to iterate through certain objects (IE collections)
+            Iterator<String> iterator = linkedHashSet.iterator(); //'LinkedHashSet' has it's own iterator, so we use that during obj construction
+
+            while (iterator.hasNext()){
+                System.out.println("Item: " + iterator.next());
+            }
 
             //System.out.println("Set: " + set);
            // System.out.println("Size: " + set.size());
