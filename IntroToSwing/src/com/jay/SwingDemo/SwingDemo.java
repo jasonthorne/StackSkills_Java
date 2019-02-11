@@ -16,6 +16,12 @@ public class SwingDemo {
         //Terminate the program when the user closes the application
         jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);
 
+        //Create a JLabel
+        JLabel jLabel = new JLabel("Here be a jLabel!");
+
+        //add JLabel to JFrame
+        jFrame.add(jLabel);
+
         //Show the frame
         jFrame.setVisible(true);
 
