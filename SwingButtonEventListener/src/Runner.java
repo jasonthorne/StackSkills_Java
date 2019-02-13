@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Runner {
 
@@ -20,6 +22,24 @@ public class Runner {
         //Make buttons
         JButton upButton = new JButton("Up");
         JButton downButton = new JButton("Down");
+
+        //Add event listeners for buttons ++++++++++++++++++++
+        upButton.addActionListener(new ActionListener() { //Passing in an anonymous new instance of an ActionListener object (NEEDED!)
+            @Override
+            public void actionPerformed(ActionEvent e) { //This is ActionListener's abstract method which needs overriding.
+
+                System.out.println("'Up' was pressed");
+            }
+        });
+
+        downButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("'Down' was pressed");
+            }
+        });
+
+
 
         //make label
         JLabel jLabel = new JLabel("My label");
