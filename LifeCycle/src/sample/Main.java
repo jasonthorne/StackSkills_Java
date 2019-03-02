@@ -37,7 +37,6 @@ public class Main extends Application {
 
     }
 
-
     //init+++++++++++++++++++++++++++++++++++++++++++++FIRST CALLED
     @Override
     public void init()throws Exception{ //This comes from our parent class 'Application'
