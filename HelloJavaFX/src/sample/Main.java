@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 //++++++++++++++++++++++++++
 //A JavaFX app has a 'Stage' (the main window). On top of that is a 'Scene', which contains root elements (such as a 'StackPane' or 'flowpane', which itself can contain another elements such as a 'Button').
-//eg: Stage > Scene > FlowPane (a Root) > Button
+//eg: Stage > Scene > Root (eg a FlowPane) > Element (eg a button)
 //++++++++++++++++++++++++++
 
 public class Main extends Application { //'Application' class gives the behaviours needed for the creation of an FX application
@@ -27,7 +27,7 @@ public class Main extends Application { //'Application' class gives the behaviou
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        //we have a stage being passed above ('primaryStage')
+        //we have a stage being passed in above ('primaryStage')
         primaryStage.setTitle("I am a stage title!"); //set the stage title
 
         //Create a 'Button' control:
