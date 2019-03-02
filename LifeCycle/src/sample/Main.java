@@ -11,8 +11,14 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    //THE JAVA APPLICATION LIFECYCLE COMPRISES OF 3 MAIN FUNCTIONS:
+    //init(), start() and then stop() (stop is called when the application exits)
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        //Start+++++++++++++++++++++++++++++++++++++++++++++SECOND CALLED
+        System.out.println("Start begins");
 
         primaryStage.setTitle("Life Cycle");//set stage title
 
@@ -27,10 +33,24 @@ public class Main extends Application {
         primaryStage.setScene(scene);
 
         //show stage
-        primaryStage.show();;
+        primaryStage.show();
 
     }
 
+
+    //init+++++++++++++++++++++++++++++++++++++++++++++FIRST CALLED
+    @Override
+    public void init()throws Exception{ //This comes from our parent class 'Application'
+       super.init();
+        System.out.println("Init begins");
+    }
+
+    //stop+++++++++++++++++++++++++++++++++++++++++++++THIRD CALLED
+    @Override
+    public void stop() throws Exception{ //This comes from our parent class 'Application'
+        super.stop();
+        System.out.println("Stop invoked");
+    }
 
     public static void main(String[] args) {
 
