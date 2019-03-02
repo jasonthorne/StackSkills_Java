@@ -42,10 +42,10 @@ public class Main extends Application implements EventHandler { //Implementing '
         selectedLbl = new Label("");
 
         //instantiate the checkboxes:
-        bananaCheckBox = new CheckBox("banana");
-        mangoCheckBox = new CheckBox("mango");
-        papayaCheckBox = new CheckBox("papaya");
-        grapefruitCheckBox = new CheckBox("grapefruit");
+        bananaCheckBox = new CheckBox("Banana");
+        mangoCheckBox = new CheckBox("Mango");
+        papayaCheckBox = new CheckBox("Papaya");
+        grapefruitCheckBox = new CheckBox("Grapefruit");
 
         //create a root (flowPane in this case):
         FlowPane flowPaneRoot = new FlowPane(Orientation.VERTICAL, 5, 5); //orientation (if you want its elements to be vertically or horizontally oriented), horiz gap, vert gap.
@@ -54,7 +54,6 @@ public class Main extends Application implements EventHandler { //Implementing '
         //Add all controls(elements) to the root:
         flowPaneRoot.getChildren().add(titleLbl);
         flowPaneRoot.getChildren().addAll(bananaCheckBox, mangoCheckBox, papayaCheckBox, grapefruitCheckBox, responseLbl, selectedLbl); //adding lots of controls at once (ORDER MATTERS!!)
-        ///flowPaneRoot.getChildren().addAll(bananaCheckBox, responseLbl);
 
         //+++++++++++++++++++++USING THESE AS 'EVENTHANDLER' IMPLEMENTED CLASS 'HANDLE' IS NOT WORKING!! +++++++++++++++++++++++++++++++++++++++++
         //Link to source:
@@ -68,6 +67,8 @@ public class Main extends Application implements EventHandler { //Implementing '
                 if (bananaCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
                     responseLbl.setText("Banana Selected");
                 }else responseLbl.setText("Banana Cleared!"); //else, the tick has been removed
+
+                showAll(); //call method to show all selected fruits
             }
         });
 
@@ -78,6 +79,8 @@ public class Main extends Application implements EventHandler { //Implementing '
                 if (mangoCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
                     responseLbl.setText("Mango Selected");
                 }else responseLbl.setText("Mango Cleared!"); //else, the tick has been removed
+
+                showAll(); //call method to show all selected fruits
             }
         });
 
@@ -88,6 +91,8 @@ public class Main extends Application implements EventHandler { //Implementing '
                 if (papayaCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
                     responseLbl.setText("Papaya Selected");
                 }else responseLbl.setText("Papaya Cleared!"); //else, the tick has been removed
+
+                showAll(); //call method to show all selected fruits
             }
         });
 
@@ -98,13 +103,12 @@ public class Main extends Application implements EventHandler { //Implementing '
                 if (grapefruitCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
                     responseLbl.setText("Grapefruit Selected");
                 }else responseLbl.setText("Grapefruit Cleared!"); //else, the tick has been removed
+
+                showAll(); //call method to show all selected fruits
             }
         });
 
-
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
 
 
         //create scene (with a height and width - IMPORTANT!!) and give it the root:
@@ -116,13 +120,20 @@ public class Main extends Application implements EventHandler { //Implementing '
         //show the stage (and its child elements)
         primaryStage.show();
 
-        showAll();
+        showAll(); //call method to show all selected fruits (none initially in this case)
 
     }
 
     public void showAll(){
 
-        fruits = "";
+        fruits = ""; //string to hold all fruits
+
+        if(bananaCheckBox.isSelected()) fruits += " Banana"; //brackets not needed as only one line used
+        if(mangoCheckBox.isSelected()) fruits += " Mango";
+        if(papayaCheckBox.isSelected()) fruits += " Papaya";
+        if(grapefruitCheckBox.isSelected()) fruits += " Grapefruit";
+
+        selectedLbl.setText("Fruits selected: " + fruits);
     }
 
     public static void main(String[] args) {
@@ -131,21 +142,20 @@ public class Main extends Application implements EventHandler { //Implementing '
 
     @Override
     public void handle(Event event) {
-        System.out.println("hullo!!!");
+        System.out.println("hullo!??");
         Object fruitChecked = event.getSource(); //'fruitChecked' is made from the source of the object that's been clicked. (eg 'bananaCheckBox')
-        System.out.println("yo");
+
     }
 
     /*@Override
     //allows us to check which checkboxes have been selected.
     public void handle(Event event) { //'Event' object has all of the info about the item that's been selected. (a checkbox in this case)
-        System.out.println("yo");
+
         //Object means a generic object type
         Object fruitChecked = event.getSource(); //'fruitChecked' is made from the source of the object that's been clicked. (eg 'bananaCheckBox')
 
         if(bananaCheckBox.equals(fruitChecked)){ //if banana checkbox was clicked by user
             if (bananaCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
-                System.out.println("hi");
                 responseLbl.setText("Banana Selected");
             }else responseLbl.setText("Banana Cleared!"); //else, the tick has been removed
         }
