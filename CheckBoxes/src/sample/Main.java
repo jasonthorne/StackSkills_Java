@@ -1,6 +1,10 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -11,9 +15,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
 
-    private Label titleLbl;//FX, NOT awt!!
+
+public class Main extends Application implements EventHandler { //Implementing 'EventHandler' inorder to use its 'Events'
+
+    private Label titleLbl;//FX, NOT awt!! (and for rest below)
     private Label responseLbl;
     private Label selectedLbl;
 
@@ -26,7 +32,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
 
         //give stage a title:
         primaryStage.setTitle("Favourite Fruit");
@@ -49,6 +54,58 @@ public class Main extends Application {
         //Add all controls(elements) to the root:
         flowPaneRoot.getChildren().add(titleLbl);
         flowPaneRoot.getChildren().addAll(bananaCheckBox, mangoCheckBox, papayaCheckBox, grapefruitCheckBox, responseLbl, selectedLbl); //adding lots of controls at once (ORDER MATTERS!!)
+        ///flowPaneRoot.getChildren().addAll(bananaCheckBox, responseLbl);
+
+        //+++++++++++++++++++++USING THESE AS 'EVENTHANDLER' IMPLEMENTED CLASS 'HANDLE' IS NOT WORKING!! +++++++++++++++++++++++++++++++++++++++++
+        //Link to source:
+        //http://www.java2s.com/Tutorials/Java/JavaFX/0440__JavaFX_Checkbox.htm
+
+        //attach eventListeners to our checkboxes:
+        bananaCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+
+                if (bananaCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
+                    responseLbl.setText("Banana Selected");
+                }else responseLbl.setText("Banana Cleared!"); //else, the tick has been removed
+            }
+        });
+
+        mangoCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+
+                if (mangoCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
+                    responseLbl.setText("Mango Selected");
+                }else responseLbl.setText("Mango Cleared!"); //else, the tick has been removed
+            }
+        });
+
+        papayaCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+
+                if (papayaCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
+                    responseLbl.setText("Papaya Selected");
+                }else responseLbl.setText("Papaya Cleared!"); //else, the tick has been removed
+            }
+        });
+
+        grapefruitCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+
+                if (grapefruitCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
+                    responseLbl.setText("Grapefruit Selected");
+                }else responseLbl.setText("Grapefruit Cleared!"); //else, the tick has been removed
+            }
+        });
+
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 
         //create scene (with a height and width - IMPORTANT!!) and give it the root:
         Scene scene = new Scene(flowPaneRoot, 400, 250);
@@ -71,4 +128,27 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args); //launches FX app
     }
+
+    @Override
+    public void handle(Event event) {
+        System.out.println("hullo!!!");
+        Object fruitChecked = event.getSource(); //'fruitChecked' is made from the source of the object that's been clicked. (eg 'bananaCheckBox')
+        System.out.println("yo");
+    }
+
+    /*@Override
+    //allows us to check which checkboxes have been selected.
+    public void handle(Event event) { //'Event' object has all of the info about the item that's been selected. (a checkbox in this case)
+        System.out.println("yo");
+        //Object means a generic object type
+        Object fruitChecked = event.getSource(); //'fruitChecked' is made from the source of the object that's been clicked. (eg 'bananaCheckBox')
+
+        if(bananaCheckBox.equals(fruitChecked)){ //if banana checkbox was clicked by user
+            if (bananaCheckBox.isSelected()){ //if checkbox has been selected (had a tick added to it)
+                System.out.println("hi");
+                responseLbl.setText("Banana Selected");
+            }else responseLbl.setText("Banana Cleared!"); //else, the tick has been removed
+        }
+
+    }*/
 }
