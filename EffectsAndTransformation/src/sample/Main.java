@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 
 
@@ -27,7 +28,13 @@ public class Main extends Application implements EventHandler {
 
     private double angle;
     private double blurVal;
+
     private BoxBlur blur; //MUST BE JavaFX!!
+    private double scaleFactor;
+
+    private Scale scale;
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -50,11 +57,19 @@ public class Main extends Application implements EventHandler {
         blurButton.setOnAction(this);
         scaleButton.setOnAction(this);
 
-        //initiate angle value:
+        //initialise angle value:
         angle = 0.0;
 
-        //initiate blur val:
+        //initialise blur val:
         blurVal = 1.0;
+
+       //initialise scaleFactor:
+        scaleFactor = 0.4;
+
+        //instantiate scale obj:
+        scale = new Scale(scaleFactor, scaleFactor);
+
+
 
         //create label control:
         Label reflect = new Label("Reflection adds Visual Sparkle");
@@ -75,8 +90,9 @@ public class Main extends Application implements EventHandler {
         //show stage
         primaryStage.show();
 
-        //Setup transformation: +++++++++++++++++
+        //Setup transformations: +++++++++++++++++
         rotateButton.getTransforms().add(rotate); //add rotate obj to rotateButton's 'getTransforms()'.
+        scaleButton.getTransforms().add(scale); //adding scaling effect from 'scale' object to our scaleButton
 
     }
 
@@ -119,6 +135,17 @@ public class Main extends Application implements EventHandler {
         }
         if (event.getSource().equals(scaleButton)){ //was scaleButton clicked
             System.out.println("Scale button clicked");
+
+            //increment scale factor:
+            scaleFactor += 0.1;
+
+            //reset scalefactor if it goes beyond 2.0:
+            if(scaleFactor > 2.0) scaleFactor = 0.4; //IF brackets not needed as single line
+
+            //reset scale object X and Y values:
+            scale.setX(scaleFactor);
+            scale.setY(scaleFactor);
+
         }
     }
 }
