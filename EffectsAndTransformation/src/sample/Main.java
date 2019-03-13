@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
@@ -25,6 +26,8 @@ public class Main extends Application implements EventHandler {
     private Rotate rotate; //This is from 'javafx.scene.transform.Rotate;'!!
 
     private double angle;
+    private double blurVal;
+    private BoxBlur blur; //MUST BE JavaFX!!
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -39,6 +42,9 @@ public class Main extends Application implements EventHandler {
         //instantiate rotate object (which has all the methods required for rotating an element):
         rotate = new Rotate();
 
+        //instantiate blur object (which has all the methods required for blurring an element):
+        blur = new BoxBlur(1.0, 1.0, 1); //width, height, iterations
+
         //register our buttons so they know what to implement. 'this' (as in this class), which implements from 'EventHandler'. Making it's 'handle' method work.
         rotateButton.setOnAction(this);
         blurButton.setOnAction(this);
@@ -46,6 +52,9 @@ public class Main extends Application implements EventHandler {
 
         //initiate angle value:
         angle = 0.0;
+
+        //initiate blur val:
+        blurVal = 1.0;
 
         //create label control:
         Label reflect = new Label("Reflection adds Visual Sparkle");
@@ -90,6 +99,23 @@ public class Main extends Application implements EventHandler {
         }
         if (event.getSource().equals(blurButton)){ //was blurButton clicked
             System.out.println("Blur button clicked");
+
+            //each time button is pressed, it's blur is changed
+
+            if (blurVal == 10.0){ //if blurVal is at this much
+                blurVal = 1.0; //THEN reset its val
+                blurButton.setEffect(null); //and reset the button
+                blurButton.setText("Blur Off");
+            }else{ //If blur value is any other number than 10:
+
+                blurVal++; //increment blurVal
+                blurButton.setEffect(blur); //set the buttons effect to be that of the Blur object, which is 'BlurBox'
+                blurButton.setText("Blur on"); //tell user that blur is on
+            }
+
+            //change the blurBox effect properties equal to the blurVal (determined by how much the user has clicked the blur button)
+            blur.setWidth(blurVal);
+            blur.setHeight(blurVal);
         }
         if (event.getSource().equals(scaleButton)){ //was scaleButton clicked
             System.out.println("Scale button clicked");
