@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.Reflection;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Scale;
@@ -23,16 +24,13 @@ public class Main extends Application implements EventHandler {
     private Button rotateButton; //MUST be JavaFX!
     private Button blurButton;
     private Button scaleButton;
-
     private Rotate rotate; //This is from 'javafx.scene.transform.Rotate;'!!
-
     private double angle;
     private double blurVal;
-
     private BoxBlur blur; //MUST BE JavaFX!!
     private double scaleFactor;
-
-    private Scale scale;
+    private Scale scale; //MUST BE JavaFX!!
+    private Reflection reflection; //MUST BE JavaFX!!
 
 
 
@@ -69,17 +67,19 @@ public class Main extends Application implements EventHandler {
         //instantiate scale obj:
         scale = new Scale(scaleFactor, scaleFactor);
 
+        //instantiate reflection object:
+        reflection = new Reflection();
 
 
         //create label control:
-        Label reflect = new Label("Reflection adds Visual Sparkle");
+        Label reflectLbl = new Label("Reflection adds Visual Sparkle");
 
         //Make root
         FlowPane root = new FlowPane(15, 15);
         root.setAlignment(Pos.CENTER); //align elements to the center of the FlowPane
 
         //add controls to root:
-        root.getChildren().addAll(rotateButton, blurButton, scaleButton, reflect);
+        root.getChildren().addAll(rotateButton, blurButton, scaleButton, reflectLbl);
 
         //create scene and pass it the root
         Scene scene = new Scene(root, 300, 120); //root, width, height
@@ -93,6 +93,13 @@ public class Main extends Application implements EventHandler {
         //Setup transformations: +++++++++++++++++
         rotateButton.getTransforms().add(rotate); //add rotate obj to rotateButton's 'getTransforms()'.
         scaleButton.getTransforms().add(scale); //adding scaling effect from 'scale' object to our scaleButton
+
+        //set up reflection properties
+        reflection.setTopOpacity(0.7);
+        reflection.setBottomOpacity(0.3);
+
+        //use our label and apply the reflection effect:
+        reflectLbl.setEffect(reflection);
 
     }
 
