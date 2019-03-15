@@ -1,6 +1,8 @@
 package sample;
 
 //+++++++++++++++++++++++++++++++++++++++
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -18,22 +20,40 @@ public class Controller implements Initializable {
     // View - what users can 'see'
     // Controller - connects the view and the model
 
+
+    //+++++++++++IMPORTANT: IDs in SceneBuilder MUST be applied in CODE tab!! ++++++++++++++++++++=
+    //This links our view (the SceneBuilder GUI) to this controller!
+
     @FXML
-    private Button clickMeBtn;
+    private Button clickMeBtn; //an ID added in SceneBuilder (under 'code' tab, NOT any other!)
 
     @FXML
     private Label myLabel;
+
+    @FXML
+    private JFXButton materialBtn;
+
+    @FXML
+    private JFXTextField textField;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         //add an event handler to button's setOnAction:
-        clickMeBtn.setOnAction(new EventHandler<ActionEvent>() {
+        materialBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Yo dawg!");
-                myLabel.setText("Woo hoo!");
+
+                String txtStr = textField.getText().trim(); //+++++trim is important here!!!!
+
+                ///System.out.println("Yo dawg!");
+                myLabel.setText(txtStr);
             }
         });
     }
+
+
+
 }
