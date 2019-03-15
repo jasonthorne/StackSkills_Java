@@ -32,6 +32,7 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Yo dawg!");
+                myLabel.setText("Woo hoo!");
             }
         });
     }
