@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -33,7 +36,9 @@ public class Main {
 
         //=============================================
         */
-        
+
+        //###################################################
+
         Addable addable = (a,b)->(a+b); //passing a & b as params, declaring its method operation to be a + b
         //invoke addable method:
         System.out.println(addable.add(1, 3));
@@ -43,6 +48,28 @@ public class Main {
         Addable addable2 = (int a, int b)->(a+b); //passing a & b as params, declaring its method operation to be a + b
         //invoke addable method:
         System.out.println(addable2.add(5, 3));
+
+        //###################################################
+
+
+        //''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+        //make an arrayList of String objects:
+        List<String> nameList = new ArrayList<>();
+        //add elements to list:
+        nameList.add("Bob"); nameList.add("Frank"); nameList.add("Marge");
+
+        //old (advanced for loop) way of spinning through list:
+        for (String names : nameList){ //create a string var called 'names', assign it the value of the current element
+            System.out.println(names); //then print elements value
+        }
+
+        //Lambda way:
+        nameList.forEach( //for each element in list:
+                (names) -> System.out.println(names) //create a var called names, and print its value
+        );
+
+        //''''''''''''''''''''''''''''''''''''''''''''''''''''
 
     }
 
