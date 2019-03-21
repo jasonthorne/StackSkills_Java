@@ -41,13 +41,13 @@ public class Main {
 
         Addable addable1 = (a,b)->(a+b); //passing a & b as params, declaring its method operation to be a + b
         //invoke addable method:
-        System.out.println(addable1.add(1, 3));
+        System.out.println(addable1.add(1,3));
 
 
         //Can also SPECIFY what input type to pass as params ('int a'):
         Addable addable2 = (int a, int b)->(a+b); //passing a & b as params, declaring its method operation to be a + b
         //invoke addable method:
-        System.out.println(addable2.add(5, 3));
+        System.out.println(addable2.add(5,3));
 
         //###################################################
 
@@ -75,7 +75,7 @@ public class Main {
         //6666666666666666666666666666666666666666666666666666
 
         //create speakable obj from interface and define the body of its method:
-        Speakable speakable = (message) -> { //'(message)' is an input param. Braces are needed here as body contains multiple elements (wouldnt be if just one like 'addable1 & 2' above)
+        Speakable speakable = (message) -> { //'(message)' is an input param. Braces are needed here as body contains multiple statements (wouldnt be if just one like 'addable1 & 2' above)
             String message2 = "Yo";
             String message3 = message + message2 + " dawg!";
 
@@ -106,8 +106,7 @@ interface Drawable{
 }
 
 
-interface  Addable{
-   public int add(int a, int b); //method takes in int an and b, and returns an int (as not 'void')
+interface  Addable{public int add(int a, int b); //method takes in int an and b, and returns an int (as not 'void')
 }
 
 
