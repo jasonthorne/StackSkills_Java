@@ -3,15 +3,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Main thread starting!");
 
-        //create new object from myThread:
-        MyThread myThreadClassObj = new MyThread("Child #1");
-
-        //Construct an actual thread from the 'myThreadClassObj' obj above:
-        //Thread newThread = new Thread(myThreadClassObj);
-
-        //start the thread
-        //newThread.start();
-
+        //create a new thread by creating an instance of 'MyThread' class
+        MyThread mythread = new MyThread("Child #1");
 
     }
 }
@@ -19,40 +12,40 @@ public class Main {
 
 class MyThread implements Runnable{ //ALL threads need to implement from Runnable ++++
 
-    Thread thread;
+    Thread thread; //thread variable of type 'Thread'
 
-    String myThreadString;
+    String threadName; //for holding name of thread
 
     @Override
     public void run() { //This is where you write the code that will run inside the thread ++++
 
-        System.out.println(myThreadString + " Starting");
+        System.out.println(threadName + " Starting");
 
         for (int count = 0; count < 10; count++) {
 
             try { //Thread creation/invocation MUST be surrounded by try-catches +++++
 
                 Thread.sleep(400); //make a thread sleep for 400 millisecs
-                System.out.println("In " + myThreadString + " count is: " + count); //sOnt after 400ms wait
+                System.out.println("In " + threadName + " count is: " + count); //sOnt after 400ms wait
 
             }catch (InterruptedException e){
 
-                System.out.println(myThreadString + " was interrupted");
+                System.out.println(threadName + " was interrupted");
                 e.printStackTrace();
-            }System.out.println(myThreadString + " terminated");
+            }System.out.println(threadName + " terminated");
 
             
         }
     }
 
     //constructor:
-    public MyThread(String myThreadString) {
+    public MyThread(String threadName) {
 
         //set the thread name:
-        this.myThreadString = myThreadString;
+        this.threadName = threadName;
 
-        thread = new Thread(this, myThreadString); //This classe's 'thread' var becomes a new Thread Object, containing an instance of this class object, and a 'myThreadString' string.
-        thread.start();
+        thread = new Thread(this, threadName); //This classe's 'thread' var becomes a new Thread Object, containing an instance of this class object, and a 'threadName' string.
+        thread.start(); //start thread
 
 
     }
