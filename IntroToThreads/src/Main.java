@@ -4,7 +4,23 @@ public class Main {
         System.out.println("Main thread starting!");
 
         //create a new thread by creating an instance of 'MyThread' class
-        MyThread mythread = new MyThread("Child #1");
+        MyThread mythread1 = new MyThread("Child #1");
+
+        //create other threads:
+        MyThread mythread2 = new MyThread("Child #2");
+        MyThread mythread3 = new MyThread("Child #3");
+        MyThread mythread4 = new MyThread("Child #4");
+
+        for (int i = 0; i < 50; i++) {
+            System.out.print(".");
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                System.out.print("Main thread interupted.");
+                e.printStackTrace();
+            }
+        } System.out.print("Main thread ending.");
+
 
     }
 }
