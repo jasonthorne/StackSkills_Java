@@ -20,8 +20,9 @@ public class Main {
 class First{
 
     //'display' method thats passed a msg
-    void display(String msg){
-        System.out.println(" ["+msg);
+    //++++ IMPORTANT: 'synchronized' only allows access to this method by way of key, allowing no issues with other threads trying to simultaneously gain entry
+    synchronized void display(String msg){
+        System.out.print(" ["+msg);
 
         try {
             Thread.sleep(1000); //sleep for a second
