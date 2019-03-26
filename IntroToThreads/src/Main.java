@@ -10,6 +10,21 @@ public class Main {
         MyThread mythread2 = new MyThread("Child #2");
         MyThread mythread3 = new MyThread("Child #3");
 
+
+        //'join' means: Wait until the specified thread ends
+        try {
+            mythread1.thread.join();
+            System.out.println("Child #1 joined");
+            mythread2.thread.join();
+            System.out.println("Child #2 joined");
+            mythread3.thread.join();
+            System.out.println("Child #3 joined");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        /*
         //A 'do while' ensures that the statement runs at least once before we check the validity of the expression ++++++++++++
         do {
             System.out.print(".");
@@ -26,6 +41,7 @@ public class Main {
         }while (mythread1.thread.isAlive() || mythread2.thread.isAlive() || mythread3.thread.isAlive());
 
         System.out.println("Main thread ending.");
+        */
 
 
 
