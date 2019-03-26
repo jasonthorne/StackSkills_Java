@@ -13,13 +13,25 @@ public class Main {
 
         //'join' means: Wait until the specified thread ends
         try {
+            /*
             mythread1.thread.join();
             System.out.println("Child #1 joined");
             mythread2.thread.join();
             System.out.println("Child #2 joined");
             mythread3.thread.join();
             System.out.println("Child #3 joined");
-        } catch (InterruptedException e) {
+            */
+
+           //set thread priority(default is 5):
+            mythread1.thread.setPriority(Thread.MIN_PRIORITY);
+            System.out.println("Child #1 priority is: " + mythread1.thread.getPriority());
+            mythread2.thread.setPriority(Thread.NORM_PRIORITY);
+            System.out.println("Child #2 priority is: " + mythread2.thread.getPriority());
+            mythread3.thread.setPriority(Thread.MAX_PRIORITY);
+            System.out.println("Child #3 priority is: " + mythread3.thread.getPriority());
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
