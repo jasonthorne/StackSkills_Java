@@ -9,8 +9,28 @@ public class Main {
         //create other threads:
         MyThread mythread2 = new MyThread("Child #2");
         MyThread mythread3 = new MyThread("Child #3");
-        MyThread mythread4 = new MyThread("Child #4");
 
+        //A 'do while' ensures that the statement runs at least once before we check the validity of the expression ++++++++++++
+        do {
+            System.out.print(".");
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                System.out.println("Main thread interupted.");
+                e.printStackTrace();
+            }
+
+
+
+        }while (mythread1.thread.isAlive() || mythread2.thread.isAlive() || mythread3.thread.isAlive());
+
+        System.out.println("Main thread ending.");
+
+
+
+
+        /*
         for (int i = 0; i < 50; i++) {
             System.out.print(".");
             try {
@@ -20,6 +40,7 @@ public class Main {
                 e.printStackTrace();
             }
         } System.out.print("Main thread ending.");
+        */
 
 
     }
